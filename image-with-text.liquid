@@ -1,0 +1,31 @@
+<section class="section">
+  <div class="wrap">
+    <div class="feature {% if section.settings.reverse %}feature--reverse{% endif %}">
+      <div class="feature__media" style="background-image:url('{{ section.settings.image | image_url: width: 1600 }}')"></div>
+      <div>
+        {% if section.settings.eyebrow != blank %}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+        <h2 class="feature__title mixed">{{ section.settings.heading }}</h2>
+        <div class="feature__body">{{ section.settings.body }}</div>
+        {% if section.settings.cta_label != blank %}
+          <a href="{{ section.settings.cta_url }}" class="btn">{{ section.settings.cta_label }} →</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with text",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Studied. Not styled." },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Every garment begins as an idea.</p>" },
+    { "type": "text", "id": "cta_label", "label": "CTA label" },
+    { "type": "url", "id": "cta_url", "label": "CTA link" },
+    { "type": "checkbox", "id": "reverse", "label": "Reverse layout", "default": false }
+  ],
+  "presets": [{ "name": "Image with text" }]
+}
+{% endschema %}

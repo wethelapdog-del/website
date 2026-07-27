@@ -1,0 +1,25 @@
+<section class="wrap section--tight">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow">All collections</p>
+      <h1 class="sec-head__title mixed"><em>Collections.</em></h1>
+    </div>
+  </div>
+  <div class="grid grid-3">
+    {% for collection in collections %}
+      <a class="card" href="{{ collection.url }}" data-reveal>
+        <div class="card__media">
+          {% if collection.image %}
+            <img src="{{ collection.image | image_url: width: 1200 }}" alt="{{ collection.title | escape }}">
+          {% else %}
+            <div style="background:{{ settings.color_cream }};height:100%;display:grid;place-items:center;color:{{ settings.color_blue }};font-family:serif;font-style:italic;font-size:24px">{{ collection.title }}</div>
+          {% endif %}
+        </div>
+        <div class="card__info">
+          <div class="card__name">{{ collection.title }}</div>
+          <div class="card__price">{{ collection.products_count }} styles →</div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>

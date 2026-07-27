@@ -1,0 +1,58 @@
+<div class="crumbs">
+  <a href="{{ routes.root_url }}">Home</a> <span>/</span>
+  <a href="{{ routes.all_products_collection_url }}">Shop</a> <span>/</span>
+  {{ collection.title }}
+</div>
+
+<section class="hero" style="min-height:60vh">
+  {% if collection.image %}
+    <div class="hero__media" style="background-image:url('{{ collection.image | image_url: width: 2400 }}')"></div>
+  {% else %}
+    <div class="hero__media" style="background: linear-gradient(135deg, {{ settings.color_blue }}, {{ settings.color_ink }});"></div>
+  {% endif %}
+  <div class="hero__content">
+    <div>
+      <p class="eyebrow hero__eyebrow">{{ collection.title }} · {{ collection.products_count }} pieces</p>
+      <h1 class="hero__title mixed"><em>{{ collection.title }}.</em></h1>
+    </div>
+    <div class="hero__meta"><p>{{ collection.description }}</p></div>
+  </div>
+</section>
+
+<div class="filters">
+  <div class="filters__chips">
+    <a class="chip {% unless collection.current_type or collection.current_vendor %}active{% endunless %}" href="{{ collection.url }}">All</a>
+    {% for tag in collection.all_tags limit: 8 %}
+      <a class="chip {% if current_tags contains tag %}active{% endif %}" href="{{ collection.url }}/{{ tag | handle }}">{{ tag }}</a>
+    {% endfor %}
+  </div>
+  <span>Sort:
+    <select onchange="location.href=this.value">
+      <option value="{{ collection.url }}?sort_by=manual">Featured</option>
+      <option value="{{ collection.url }}?sort_by=created-descending">Newest</option>
+      <option value="{{ collection.url }}?sort_by=price-ascending">Price ↑</option>
+      <option value="{{ collection.url }}?sort_by=price-descending">Price ↓</option>
+    </select>
+  </span>
+</div>
+
+<section class="wrap section--tight">
+  <div class="grid grid-3">
+    {% paginate collection.products by 24 %}
+      {% for product in collection.products %}
+        {% render 'product-card', product: product %}
+      {% else %}
+        <p class="muted">No products yet — placeholder collection.</p>
+      {% endfor %}
+    {% if paginate.pages > 1 %}
+      <div class="text-center mt-4" style="grid-column:1/-1">
+        {{ paginate | default_pagination }}
+      </div>
+    {% endif %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Collection", "settings": [] }
+{% endschema %}

@@ -1,0 +1,39 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "LapDog",
+    "theme_version": "1.0.0",
+    "theme_author": "LapDog Studio",
+    "theme_documentation_url": "https://lapdog.co",
+    "theme_support_url": "mailto:hello@lapdog.co"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_cream", "label": "Cream", "default": "#FAF6E7" },
+      { "type": "color", "id": "color_blue", "label": "Cobalt Blue", "default": "#1E1EF0" },
+      { "type": "color", "id": "color_ink", "label": "Ink", "default": "#0A0A0A" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      { "type": "font_picker", "id": "type_header_font", "label": "Heading font", "default": "playfair_display_n5i" },
+      { "type": "font_picker", "id": "type_body_font", "label": "Body font", "default": "inter_n4" }
+    ]
+  },
+  {
+    "name": "Branding",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo" },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram", "default": "https://instagram.com/lapdog" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok" }
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+<div class="crumbs"><a href="{{ routes.root_url }}">Home</a> <span>/</span> Journal</div>
+<section class="wrap section--tight">
+  <div class="sec-head">
+    <div><p class="eyebrow">Field notes</p><h1 class="sec-head__title mixed">The <em>{{ blog.title | downcase }}.</em></h1></div>
+  </div>
+  <div class="grid grid-3">
+    {% for article in blog.articles %}
+      <a class="card" href="{{ article.url }}" data-reveal>
+        <div class="card__media" style="aspect-ratio:4/3">
+          {% if article.image %}
+            <img src="{{ article.image | image_url: width: 1000 }}" alt="{{ article.title | escape }}">
+          {% else %}
+            <div style="background:#F1EBD3;height:100%;"></div>
+          {% endif %}
+        </div>
+        <div class="card__info">
+          <div>
+            <div class="card__note">{{ article.tags | first }}</div>
+            <div class="card__name" style="margin-top:6px">{{ article.title }}</div>
+            <p class="muted" style="font-size:13px;margin:8px 0 0">{{ article.excerpt_or_content | strip_html | truncatewords: 24 }}</p>
+          </div>
+          <span class="card__note">Read →</span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Blog", "settings": [] }
+{% endschema %}

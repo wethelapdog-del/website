@@ -1,0 +1,17 @@
+<article class="editorial">
+  <div class="editorial__intro">
+    <p class="eyebrow">Journal · {{ article.tags | first | default: 'Field note' }}</p>
+    <h1 class="mixed">{{ article.title }}</h1>
+    <p class="muted" style="font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-top:20px">{{ article.author }} · {{ article.published_at | date: '%b %Y' }}</p>
+  </div>
+  {% if article.image %}
+    <figure><img src="{{ article.image | image_url: width: 1600 }}" alt="{{ article.title | escape }}"></figure>
+  {% endif %}
+  <div class="editorial__body">
+    {{ article.content }}
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

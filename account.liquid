@@ -1,0 +1,35 @@
+<div class="crumbs"><a href="{{ routes.root_url }}">Home</a> <span>/</span> Account</div>
+<section class="wrap section--tight">
+  <div class="sec-head">
+    <div><p class="eyebrow">Welcome back</p><h1 class="sec-head__title mixed">Hi, <em>{{ customer.first_name | default: customer.email }}.</em></h1></div>
+    <a href="{{ routes.account_logout_url }}" class="btn btn--outline">Sign Out</a>
+  </div>
+
+  <h3 class="eyebrow mt-4">Recent orders</h3>
+  <table class="plain mt-2">
+    <thead><tr><th>Order</th><th>Date</th><th>Total</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for order in customer.orders %}
+        <tr>
+          <td>{{ order.name }}</td>
+          <td>{{ order.created_at | date: '%d %b %Y' }}</td>
+          <td>{{ order.total_price | money }}</td>
+          <td>{{ order.financial_status }}</td>
+          <td><a href="{{ order.customer_url }}">View →</a></td>
+        </tr>
+      {% else %}
+        <tr><td colspan="5"><p class="muted">No orders yet.</p></td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 class="eyebrow mt-4">Default address</h3>
+  <div class="cart__summary mt-2" style="max-width:400px">
+    {% if customer.default_address %}
+      {{ customer.default_address | format_address }}
+    {% else %}
+      <p class="muted">No default address on file.</p>
+    {% endif %}
+    <a href="{{ routes.account_addresses_url }}" class="btn mt-2">Manage Addresses →</a>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<div class="ticker {% if section.settings.blue %}ticker--blue{% endif %}">
+  <div class="ticker__track">
+    {% for block in section.blocks %}<span>{{ block.settings.text }}</span>{% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "settings": [
+    { "type": "checkbox", "id": "blue", "label": "Cobalt variant", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "LapDog · Vol. 03 · Est. MMXXV" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "text", "settings": { "text": "LapDog · Vol. 03 · Est. MMXXV" } },
+      { "type": "text", "settings": { "text": "Made In Limited Quantity" } },
+      { "type": "text", "settings": { "text": "Free Shipping Over ₹4,500" } }
+    ]
+  },
+  "presets": [{ "name": "Marquee" }]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+<section class="cart">
+  {% if cart.item_count > 0 %}
+    <div>
+      <h1 class="mixed"><em>Bag.</em></h1>
+      {% form 'cart', cart %}
+        {% for item in cart.items %}
+          <div class="cart__row">
+            <div class="thumb">
+              {% if item.image %}
+                <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" style="width:100%;height:100%;object-fit:cover">
+              {% endif %}
+            </div>
+            <div>
+              <div class="name">{{ item.product.title }}</div>
+              <div class="qty">{{ item.variant.title }}</div>
+              <a href="{{ item.url_to_remove }}" class="card__note" style="text-decoration:underline">Remove</a>
+            </div>
+            <div class="qty">Qty {{ item.quantity }}</div>
+            <div class="qty">{{ item.final_line_price | money }}</div>
+          </div>
+        {% endfor %}
+      {% endform %}
+    </div>
+
+    <aside class="cart__summary">
+      <h3 class="mixed" style="font-size:32px"><em>Summary.</em></h3>
+      <div class="cart__line"><span>Subtotal</span><span>{{ cart.total_price | money }}</span></div>
+      <div class="cart__line"><span>Shipping</span><span>Calculated at checkout</span></div>
+      <div class="cart__line cart__line--total"><span>Total</span><span>{{ cart.total_price | money }}</span></div>
+      <a href="{{ routes.cart_url }}/checkout" class="btn btn--lg btn--block mt-2">Checkout →</a>
+    </aside>
+  {% else %}
+    <div style="grid-column:1/-1;text-align:center">
+      <h1 class="mixed"><em>Bag is empty.</em></h1>
+      <p class="editorial__lead">The pack awaits your first pick.</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--lg mt-4">Shop All →</a>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{ "name": "Cart", "settings": [] }
+{% endschema %}

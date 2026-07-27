@@ -1,0 +1,37 @@
+<section class="hero">
+  {% if section.settings.image %}
+    <div class="hero__media" style="background-image:url('{{ section.settings.image | image_url: width: 2400 }}')"></div>
+  {% else %}
+    <div class="hero__media" style="background: linear-gradient(135deg, {{ settings.color_blue }}, {{ settings.color_ink }});"></div>
+  {% endif %}
+  <div class="hero__content">
+    <div>
+      <p class="eyebrow hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1 class="hero__title">
+        <span class="serif">{{ section.settings.title_serif }}</span> <span class="grot">{{ section.settings.title_grot }}</span>
+      </h1>
+      {% if section.settings.cta_label != blank %}
+        <a href="{{ section.settings.cta_url }}" class="btn btn--blue mt-2">{{ section.settings.cta_label }} →</a>
+      {% endif %}
+    </div>
+    <div class="hero__meta">
+      <p>{{ section.settings.meta }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Volume 03 · SS26" },
+    { "type": "text", "id": "title_serif", "label": "Title (serif italic)", "default": "Quietly" },
+    { "type": "text", "id": "title_grot", "label": "Title (bold sans)", "default": "LOUD." },
+    { "type": "textarea", "id": "meta", "label": "Meta text", "default": "A twelve-piece study in heavyweight cotton, cut & sewn in limited runs." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Explore The Drop" },
+    { "type": "url", "id": "cta_url", "label": "CTA link" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

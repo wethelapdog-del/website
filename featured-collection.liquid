@@ -1,0 +1,48 @@
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 class="sec-head__title mixed">{{ section.settings.heading }}</h2>
+      </div>
+      {% if section.settings.view_all_url != blank %}
+        <a href="{{ section.settings.view_all_url }}" class="btn btn--outline">View All →</a>
+      {% endif %}
+    </div>
+    <div class="grid grid-4">
+      {% assign products = collections[section.settings.collection].products | slice: 0, section.settings.product_count %}
+      {% for product in products %}
+        {% render 'product-card', product: product %}
+      {% else %}
+        {% for i in (1..4) %}
+          <div class="card">
+            <div class="card__media">
+              <svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg">
+                <rect width="480" height="600" fill="#F1EBD3"/>
+                <text x="240" y="310" text-anchor="middle" font-family="serif" font-style="italic" font-size="20" fill="#1E1EF0">Placeholder</text>
+              </svg>
+            </div>
+            <div class="card__info">
+              <div><div class="card__name">Add products to collection</div><div class="card__note">Placeholder</div></div>
+              <div class="card__price">—</div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "02 · Featured" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Wardrobe essentials." },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "product_count", "label": "Products", "min": 2, "max": 12, "step": 1, "default": 4 },
+    { "type": "url", "id": "view_all_url", "label": "View-all link" }
+  ],
+  "presets": [{ "name": "Featured collection" }]
+}
+{% endschema %}

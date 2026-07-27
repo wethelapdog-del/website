@@ -1,0 +1,17 @@
+{
+  "current": {
+    "color_cream": "#FAF6E7",
+    "color_blue": "#1E1EF0",
+    "color_ink": "#0A0A0A",
+    "type_header_font": "playfair_display_n5i",
+    "type_body_font": "inter_n4",
+    "social_instagram": "https://instagram.com/lapdog"
+  },
+  "presets": {
+    "LapDog Default": {
+      "color_cream": "#FAF6E7",
+      "color_blue": "#1E1EF0",
+      "color_ink": "#0A0A0A"
+    }
+  }
+}

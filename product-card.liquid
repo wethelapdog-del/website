@@ -1,0 +1,28 @@
+{% comment %} Renders a single product card. Usage: {% render 'product-card', product: product %} {% endcomment %}
+<a class="card" href="{{ product.url }}" data-reveal>
+  <div class="card__media">
+    {% if product.tags contains 'new' %}<span class="card__badge card__badge--blue">New</span>{% endif %}
+    {% if product.compare_at_price > product.price %}<span class="card__badge">Sale</span>{% endif %}
+    {% if product.featured_image %}
+      <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy">
+    {% else %}
+      <svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="480" height="600" fill="{{ settings.color_cream | default: '#F1EBD3' }}"/>
+        <text x="240" y="310" text-anchor="middle" font-family="'Playfair Display',serif" font-style="italic" font-size="22" fill="{{ settings.color_blue | default: '#1E1EF0' }}" opacity=".75">{{ product.title | escape }}</text>
+      </svg>
+    {% endif %}
+  </div>
+  <div class="card__info">
+    <div>
+      <div class="card__name">{{ product.title }}</div>
+      <div class="card__note">{{ product.vendor | default: 'LapDog' }}</div>
+    </div>
+    <div class="card__price">
+      {% if product.compare_at_price > product.price %}
+        <s>{{ product.compare_at_price | money }}</s> {{ product.price | money }}
+      {% else %}
+        {{ product.price | money }}
+      {% endif %}
+    </div>
+  </div>
+</a>

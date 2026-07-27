@@ -1,0 +1,30 @@
+{
+  "general": {
+    "accessibility": { "skip_to_text": "Skip to content" },
+    "search": { "title": "Search", "placeholder": "Search" },
+    "cart": { "title": "Bag", "empty": "Your bag is empty.", "checkout": "Checkout", "subtotal": "Subtotal" },
+    "newsletter": { "heading": "Enter the pack.", "email_placeholder": "Email address", "subscribe": "Subscribe" }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to bag",
+      "sold_out": "Sold out",
+      "on_sale": "Sale",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price"
+    }
+  },
+  "collections": {
+    "general": { "no_matches": "No products found." }
+  },
+  "customer": {
+    "account": {
+      "title": "Account",
+      "orders": "Orders",
+      "addresses": "Addresses",
+      "log_out": "Sign out"
+    },
+    "login_page": { "title": "Sign in" },
+    "register": { "title": "Create account" }
+  }
+}

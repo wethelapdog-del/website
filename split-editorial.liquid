@@ -1,0 +1,36 @@
+<section class="section--tight">
+  <div class="split">
+    {% for block in section.blocks %}
+      <div class="split__cell" style="background-image:url('{{ block.settings.image | image_url: width: 1600 }}')">
+        <div>
+          <p class="eyebrow" style="color:rgba(250,246,231,.75)">{{ block.settings.eyebrow }}</p>
+          <h3>{{ block.settings.heading }}</h3>
+          {% if block.settings.cta_label != blank %}
+            <a href="{{ block.settings.cta_url }}" class="btn btn--outline" style="border-color:var(--cream); color:var(--cream); margin-top:20px">{{ block.settings.cta_label }} →</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Split editorial",
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "cell",
+      "name": "Cell",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Chapter I" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Sun-bleached alleys." },
+        { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Read →" },
+        { "type": "url", "id": "cta_url", "label": "CTA link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Split editorial" }]
+}
+{% endschema %}

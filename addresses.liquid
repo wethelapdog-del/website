@@ -1,0 +1,10 @@
+<div class="wrap section--tight">
+  <h1 class="sec-head__title mixed"><em>Addresses.</em></h1>
+  <div class="grid grid-2 mt-2">
+    {% for address in customer.addresses %}
+      <div class="cart__summary">
+        {{ address | format_address }}
+      </div>
+    {% endfor %}
+  </div>
+</div>

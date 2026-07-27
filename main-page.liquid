@@ -1,0 +1,9 @@
+<div class="legal">
+  <p class="eyebrow">{{ page.template_suffix | default: 'Page' | capitalize }}</p>
+  <h1 class="mixed"><em>{{ page.title }}.</em></h1>
+  <div class="mt-2">{{ page.content }}</div>
+</div>
+
+{% schema %}
+{ "name": "Page", "settings": [] }
+{% endschema %}

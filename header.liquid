@@ -1,0 +1,55 @@
+<div class="announcement">
+  <div class="announcement__track">
+    {% for block in section.blocks %}
+      {% if block.type == 'message' %}<span>{{ block.settings.message }}</span>{% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <nav class="site-header__nav">
+      {% for link in linklists[section.settings.menu].links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
+    <a class="site-header__logo" href="{{ routes.root_url }}">
+      {% if settings.logo %}
+        <img src="{{ settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" style="max-height:36px">
+      {% else %}
+        <em>Lap</em><b>Dog</b>
+      {% endif %}
+    </a>
+    <div class="site-header__utils">
+      <a href="{{ routes.search_url }}">Search</a>
+      <a href="{{ routes.account_url }}">Account</a>
+      <a href="{{ routes.cart_url }}" data-cart-open>Bag<span class="cart-count">{{ cart.item_count }}</span></a>
+      <button class="mobile-toggle" data-mobile-toggle aria-label="Menu">Menu</button>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Announcement message",
+      "settings": [
+        { "type": "text", "id": "message", "label": "Message", "default": "New Vol. 03 · Landing 02.03" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "message", "settings": { "message": "Complimentary shipping over ₹4,500" } },
+      { "type": "message", "settings": { "message": "New Drop · Vol. 03 landing 02.03" } },
+      { "type": "message", "settings": { "message": "Sign up for first access" } }
+    ]
+  }
+}
+{% endschema %}

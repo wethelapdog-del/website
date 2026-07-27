@@ -1,0 +1,18 @@
+<div class="wrap section--tight">
+  <p class="eyebrow">Order {{ order.name }}</p>
+  <h1 class="sec-head__title mixed"><em>Order.</em></h1>
+  <p>Placed {{ order.created_at | date: '%d %b %Y' }} · Status {{ order.financial_status }}</p>
+  <table class="plain mt-4">
+    <thead><tr><th>Product</th><th>Qty</th><th>Total</th></tr></thead>
+    <tbody>
+      {% for line_item in order.line_items %}
+      <tr>
+        <td>{{ line_item.title }}</td>
+        <td>{{ line_item.quantity }}</td>
+        <td>{{ line_item.line_price | money }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="mt-2"><b>Total: {{ order.total_price | money }}</b></p>
+</div>

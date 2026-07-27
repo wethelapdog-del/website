@@ -1,0 +1,72 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Volume 03 · SS26",
+        "title_serif": "Quietly",
+        "title_grot": "LOUD.",
+        "meta": "A twelve-piece study in heavyweight cotton, cut & sewn in limited runs.",
+        "cta_label": "Explore The Drop",
+        "cta_url": "/collections/all"
+      }
+    },
+    "marquee-1": {
+      "type": "marquee",
+      "settings": { "blue": true },
+      "blocks": {
+        "b1": { "type": "text", "settings": { "text": "New Arrivals · Vol. 03" } },
+        "b2": { "type": "text", "settings": { "text": "Made In Limited Quantity" } },
+        "b3": { "type": "text", "settings": { "text": "Free Shipping Over ₹4,500" } }
+      },
+      "block_order": ["b1","b2","b3"]
+    },
+    "collection-list": {
+      "type": "collection-list",
+      "settings": {
+        "eyebrow": "01 · Collections",
+        "heading": "The Categories."
+      },
+      "blocks": {
+        "b1": { "type": "collection", "settings": { "label": "Tees" } },
+        "b2": { "type": "collection", "settings": { "label": "Caps" } },
+        "b3": { "type": "collection", "settings": { "label": "Accessories" } }
+      },
+      "block_order": ["b1","b2","b3"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "02 · Featured",
+        "heading": "Wardrobe essentials.",
+        "product_count": 4
+      }
+    },
+    "split": {
+      "type": "split-editorial",
+      "blocks": {
+        "b1": { "type": "cell", "settings": { "eyebrow": "Chapter I", "heading": "Sun-bleached alleys.", "cta_label": "Read The Lookbook", "cta_url": "/pages/lookbook" } },
+        "b2": { "type": "cell", "settings": { "eyebrow": "Chapter II", "heading": "Plaster & pigment.", "cta_label": "Continue Reading", "cta_url": "/pages/lookbook-chapter-2" } }
+      },
+      "block_order": ["b1","b2"]
+    },
+    "image-text": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "03 · Method",
+        "heading": "Studied. Not styled.",
+        "body": "<p>Every garment begins as a small idea and ends after six pattern revisions. We build in cotton — 280–320 gsm — then remove until the shape earns its silence.</p><p>No mass runs. No shortcuts.</p>",
+        "cta_label": "Our Story",
+        "cta_url": "/pages/about"
+      }
+    },
+    "marquee-2": {
+      "type": "marquee",
+      "blocks": {
+        "b1": { "type": "text", "settings": { "text": "LapDog · Est. MMXXV" } }
+      },
+      "block_order": ["b1"]
+    }
+  },
+  "order": ["hero","marquee-1","collection-list","featured","split","image-text","marquee-2"]
+}

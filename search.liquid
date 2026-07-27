@@ -1,0 +1,25 @@
+<section class="auth" style="max-width:720px">
+  <h1>Search.</h1>
+  <p class="small">Find garments, stories, journal notes.</p>
+  <form action="{{ routes.search_url }}" method="get">
+    <div class="field"><input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Try: heavyweight tee" autofocus></div>
+    <button type="submit" class="btn btn--lg btn--block">Search →</button>
+  </form>
+  {% if search.performed %}
+    <div style="margin-top:40px">
+      <p class="eyebrow">{{ search.results_count }} results for "{{ search.terms | escape }}"</p>
+      <div class="grid grid-3 mt-2">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+            {% render 'product-card', product: item %}
+          {% else %}
+            <a class="card" href="{{ item.url }}">
+              <div class="card__media" style="aspect-ratio:4/3;background:#F1EBD3"></div>
+              <div class="card__info"><div class="card__name">{{ item.title }}</div><div class="card__note">{{ item.object_type }}</div></div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</section>

@@ -1,0 +1,15 @@
+<section class="auth">
+  <h1>Create account.</h1>
+  <p class="small">Membership · The List</p>
+  {% form 'create_customer' %}
+    {{ form.errors | default_errors }}
+    <div class="grid grid-2" style="gap:12px">
+      <div class="field"><label>First name</label><input type="text" name="customer[first_name]" required></div>
+      <div class="field"><label>Last name</label><input type="text" name="customer[last_name]" required></div>
+    </div>
+    <div class="field"><label>Email</label><input type="email" name="customer[email]" required></div>
+    <div class="field"><label>Password</label><input type="password" name="customer[password]" required></div>
+    <button type="submit" class="btn btn--lg btn--block">Register →</button>
+  {% endform %}
+  <p class="auth__foot">Already registered? <a href="{{ routes.account_login_url }}">Sign in →</a></p>
+</section>
